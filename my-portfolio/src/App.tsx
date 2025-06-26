@@ -13,6 +13,8 @@ function App() {
     ? '/MyPortfolioReact' 
     : '';
   
+  console.log('🚀 App loading with basename:', basename);
+  
   return (
     <Router basename={basename}>
       <Layout>
