@@ -9,20 +9,22 @@ import Projects from "./pages/Projects";
 import ContactMe from "./pages/ContactMe";
 
 function App() {
-  // Set base path only for GitHub Pages production deployment
-  const basename = import.meta.env.PROD && window.location.hostname.includes('github.io') 
+  // For custom domain, always use empty basename
+  // Only use /MyPortfolioReact basename for GitHub Pages subdomain
+  const basename = window.location.hostname === 'ashish73653.github.io' 
     ? '/MyPortfolioReact' 
     : '';
   
-  console.log('🚀 App loading with basename:', basename);
+  console.log('🚀 App loading with basename:', basename, 'hostname:', window.location.hostname);
   
-  // Handle any remaining redirect parameters after the page loads
+  // Clean up any remaining redirect parameters after the page loads
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.has('p') || urlParams.has('q') || urlParams.has('h')) {
       // Clean up any remaining redirect parameters
       const cleanUrl = window.location.origin + window.location.pathname;
       window.history.replaceState({}, '', cleanUrl);
+      console.log('🧹 Cleaned up redirect parameters');
     }
   }, []);
   
