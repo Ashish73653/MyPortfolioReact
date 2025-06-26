@@ -26,60 +26,12 @@ jobs:
           cache: "npm"
           cache-dependency-path: ./my-portfolio/package-lock.json
 
-      - name: Check Repository Secrets
-        run: |
-          echo "🔍 Checking which repository secrets are configured..."
-          echo "VITE_GITHUB_USERNAME: ${{ secrets.VITE_GITHUB_USERNAME != '' && 'CONFIGURED' || 'MISSING' }}"
-          echo "VITE_GITHUB_TOKEN: ${{ secrets.VITE_GITHUB_TOKEN != '' && 'CONFIGURED' || 'MISSING' }}"
-          echo "VITE_FIREBASE_API_KEY: ${{ secrets.VITE_FIREBASE_API_KEY != '' && 'CONFIGURED' || 'MISSING' }}"
-          echo "VITE_FIREBASE_AUTH_DOMAIN: ${{ secrets.VITE_FIREBASE_AUTH_DOMAIN != '' && 'CONFIGURED' || 'MISSING' }}"
-          echo "VITE_FIREBASE_PROJECT_ID: ${{ secrets.VITE_FIREBASE_PROJECT_ID != '' && 'CONFIGURED' || 'MISSING' }}"
-          echo "VITE_FIREBASE_STORAGE_BUCKET: ${{ secrets.VITE_FIREBASE_STORAGE_BUCKET != '' && 'CONFIGURED' || 'MISSING' }}"
-          echo "VITE_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.VITE_FIREBASE_MESSAGING_SENDER_ID != '' && 'CONFIGURED' || 'MISSING' }}"
-          echo "VITE_FIREBASE_APP_ID: ${{ secrets.VITE_FIREBASE_APP_ID != '' && 'CONFIGURED' || 'MISSING' }}"
-          echo "VITE_ADMIN_EMAIL: ${{ secrets.VITE_ADMIN_EMAIL != '' && 'CONFIGURED' || 'MISSING' }}"
-          echo "VITE_EMAILJS_SERVICE_ID: ${{ secrets.VITE_EMAILJS_SERVICE_ID != '' && 'CONFIGURED' || 'MISSING' }}"
-          echo "VITE_EMAILJS_TEMPLATE_ID: ${{ secrets.VITE_EMAILJS_TEMPLATE_ID != '' && 'CONFIGURED' || 'MISSING' }}"
-          echo "VITE_EMAILJS_PUBLIC_KEY: ${{ secrets.VITE_EMAILJS_PUBLIC_KEY != '' && 'CONFIGURED' || 'MISSING' }}"
-
       - name: Install dependencies
         run: npm ci
         working-directory: ./my-portfolio
 
       - name: Build
         run: npm run build
-        working-directory: ./my-portfolio
-        env:
-          NODE_ENV: production
-          VITE_GITHUB_USERNAME: ${{ secrets.VITE_GITHUB_USERNAME }}
-          VITE_GITHUB_TOKEN: ${{ secrets.VITE_GITHUB_TOKEN }}
-          VITE_FIREBASE_API_KEY: ${{ secrets.VITE_FIREBASE_API_KEY }}
-          VITE_FIREBASE_AUTH_DOMAIN: ${{ secrets.VITE_FIREBASE_AUTH_DOMAIN }}
-          VITE_FIREBASE_PROJECT_ID: ${{ secrets.VITE_FIREBASE_PROJECT_ID }}
-          VITE_FIREBASE_STORAGE_BUCKET: ${{ secrets.VITE_FIREBASE_STORAGE_BUCKET }}
-          VITE_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.VITE_FIREBASE_MESSAGING_SENDER_ID }}
-          VITE_FIREBASE_APP_ID: ${{ secrets.VITE_FIREBASE_APP_ID }}
-          VITE_ADMIN_EMAIL: ${{ secrets.VITE_ADMIN_EMAIL }}
-          VITE_EMAILJS_SERVICE_ID: ${{ secrets.VITE_EMAILJS_SERVICE_ID }}
-          VITE_EMAILJS_TEMPLATE_ID: ${{ secrets.VITE_EMAILJS_TEMPLATE_ID }}
-          VITE_EMAILJS_PUBLIC_KEY: ${{ secrets.VITE_EMAILJS_PUBLIC_KEY }}
-
-      - name: Debug Environment Variables
-        run: |
-          echo "🔍 Checking environment variables..."
-          echo "NODE_ENV: $NODE_ENV"
-          echo "VITE_GITHUB_USERNAME: ${VITE_GITHUB_USERNAME:-NOT_SET}"
-          echo "VITE_GITHUB_TOKEN: ${VITE_GITHUB_TOKEN:+SET}"
-          echo "VITE_FIREBASE_API_KEY: ${VITE_FIREBASE_API_KEY:+SET}"
-          echo "VITE_FIREBASE_AUTH_DOMAIN: ${VITE_FIREBASE_AUTH_DOMAIN:-NOT_SET}"
-          echo "VITE_FIREBASE_PROJECT_ID: ${VITE_FIREBASE_PROJECT_ID:-NOT_SET}"
-          echo "VITE_FIREBASE_STORAGE_BUCKET: ${VITE_FIREBASE_STORAGE_BUCKET:-NOT_SET}"
-          echo "VITE_FIREBASE_MESSAGING_SENDER_ID: ${VITE_FIREBASE_MESSAGING_SENDER_ID:-NOT_SET}"
-          echo "VITE_FIREBASE_APP_ID: ${VITE_FIREBASE_APP_ID:-NOT_SET}"
-          echo "VITE_ADMIN_EMAIL: ${VITE_ADMIN_EMAIL:-NOT_SET}"
-          echo "VITE_EMAILJS_SERVICE_ID: ${VITE_EMAILJS_SERVICE_ID:-NOT_SET}"
-          echo "VITE_EMAILJS_TEMPLATE_ID: ${VITE_EMAILJS_TEMPLATE_ID:-NOT_SET}"
-          echo "VITE_EMAILJS_PUBLIC_KEY: ${VITE_EMAILJS_PUBLIC_KEY:+SET}"
         working-directory: ./my-portfolio
         env:
           NODE_ENV: production
