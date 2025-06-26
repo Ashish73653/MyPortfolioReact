@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./components/Layout";
 import About from "./pages/About";
 import Resume from "./pages/Resume";
@@ -8,8 +8,13 @@ import Projects from "./pages/Projects";
 import ContactMe from "./pages/ContactMe";
 
 function App() {
+  // Set base path only for GitHub Pages production deployment
+  const basename = import.meta.env.PROD && window.location.hostname.includes('github.io') 
+    ? '/MyPortfolioReact' 
+    : '';
+  
   return (
-    <Router>
+    <Router basename={basename}>
       <Layout>
         <Routes>
           <Route path="/" element={<About />} />
@@ -18,6 +23,8 @@ function App() {
           <Route path="/skills" element={<Skills />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/contact" element={<ContactMe />} />
+          {/* Catch all route - redirect to home */}
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Layout>
     </Router>
