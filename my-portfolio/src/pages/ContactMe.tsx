@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import emailjs from '@emailjs/browser';
+import { trackContactFormSubmission, trackExternalLink } from "../utils/analytics";
 
 interface FormData {
   name: string;
@@ -162,6 +163,9 @@ export default function ContactMe() {
         setSubmitStatus('success');
         setFormData({ name: "", email: "", subject: "", message: "" });
         console.log('Email sent successfully!', result);
+        
+        // Track successful contact form submission
+        trackContactFormSubmission('email');
       } else {
         throw new Error(`EmailJS returned status: ${result.status}`);
       }
@@ -654,6 +658,7 @@ export default function ContactMe() {
                         href={link.url}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={() => trackExternalLink(link.url, link.name.toLowerCase())}
                         className={`group bg-gradient-to-r ${link.color} text-white p-4 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col items-center gap-2 relative overflow-hidden`}
                         whileHover={{ 
                           scale: 1.05, 
