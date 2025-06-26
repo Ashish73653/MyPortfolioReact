@@ -80,6 +80,6 @@ Once all items are checked, your portfolio is ready to showcase your work!
 
 Add any additional setup notes or customizations here:
 
-- 
-- 
-- 
+-
+-
+-

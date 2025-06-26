@@ -7,20 +7,24 @@ This directory contains images used in the README and documentation.
 Add the following images to make the README complete:
 
 ### Main Portfolio Screenshots
+
 - `portfolio-main.png` - Main portfolio homepage screenshot
 - `portfolio-demo.gif` - Animated demo of the portfolio
 
 ### Mobile Screenshots (360px width recommended)
+
 - `mobile-home.png` - Mobile home/about page
 - `mobile-projects.png` - Mobile projects page
 - `mobile-admin.png` - Mobile admin button/interface
 
 ### Desktop Screenshots (1200px width recommended)
+
 - `desktop-home.png` - Desktop home/about page
 - `desktop-projects.png` - Desktop projects page
 - `desktop-admin.png` - Desktop admin panel interface
 
 ### Feature Screenshots
+
 - `admin-panel.png` - Admin authentication and controls
 - `skills-section.png` - Skills page with progress bars
 - `contact-form.png` - Contact form interface

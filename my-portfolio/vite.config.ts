@@ -16,5 +16,5 @@ export default defineConfig({
       }
     }
   ],
-  base: process.env.NODE_ENV === 'production' ? '/MyPortfolioReact/' : '/',
+  base: process.env.NODE_ENV === 'production' ? '/' : '/',
 })

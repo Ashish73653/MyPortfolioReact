@@ -3,13 +3,15 @@
 A cutting-edge, responsive portfolio website built with React, TypeScript, and modern web technologies. Features smooth animations, Firebase integration for dynamic content management, and seamless deployment on GitHub Pages.
 
 <!-- Add main portfolio screenshot here -->
+
 ![Portfolio Screenshot](./docs/images/portfolio-main.png)
 
 ## ✨ Live Demo
 
-🌐 **Live Site**: [https://ashish73653.github.io/MyPortfolioReact/](https://ashish73653.github.io/MyPortfolioReact/)
+🌐 **Live Site**: [https://ashishthakur.me](https://ashishthakur.me)
 
 <!-- Add demo GIF here -->
+
 ![Portfolio Demo](./docs/images/portfolio-demo.gif)
 
 ---
@@ -17,6 +19,7 @@ A cutting-edge, responsive portfolio website built with React, TypeScript, and m
 ## 🎯 Features
 
 ### 🎨 Core Features
+
 - **Modern UI/UX**: Beautiful, responsive design with smooth animations
 - **📱 Fully Responsive**: Optimized for all screen sizes (mobile, tablet, desktop)
 - **⚡ Performance Optimized**: 60fps animations with excellent performance
@@ -47,6 +50,7 @@ A cutting-edge, responsive portfolio website built with React, TypeScript, and m
 ## 🛠️ Tech Stack
 
 ### Frontend
+
 - **React 18** - Modern React with hooks
 - **TypeScript** - Type-safe development
 - **Vite** - Fast build tool and dev server
@@ -54,11 +58,13 @@ A cutting-edge, responsive portfolio website built with React, TypeScript, and m
 - **Framer Motion** - Smooth animations and transitions
 
 ### Backend & Services
+
 - **Firebase** - Authentication, Firestore database, hosting
 - **EmailJS** - Contact form email integration
 - **GitHub API** - Live repository data fetching
 
 ### Development & Deployment
+
 - **ESLint** - Code linting and formatting
 - **GitHub Actions** - Automated CI/CD pipeline
 - **GitHub Pages** - Free hosting and deployment
@@ -68,19 +74,25 @@ A cutting-edge, responsive portfolio website built with React, TypeScript, and m
 ## 📱 Screenshots
 
 <!-- Add mobile screenshots -->
+
 ### Mobile View
+
 ![Mobile Home](./docs/images/mobile-home.png)
 ![Mobile Projects](./docs/images/mobile-projects.png)
 ![Mobile Admin](./docs/images/mobile-admin.png)
 
 <!-- Add desktop screenshots -->
+
 ### Desktop View
+
 ![Desktop Home](./docs/images/desktop-home.png)
 ![Desktop Projects](./docs/images/desktop-projects.png)
 ![Desktop Admin Panel](./docs/images/desktop-admin.png)
 
 <!-- Add feature screenshots -->
+
 ### Key Features
+
 ![Admin Panel](./docs/images/admin-panel.png)
 ![Skills Section](./docs/images/skills-section.png)
 ![Contact Form](./docs/images/contact-form.png)
@@ -92,6 +104,7 @@ A cutting-edge, responsive portfolio website built with React, TypeScript, and m
 ### Prerequisites
 
 Make sure you have the following installed:
+
 - **Node.js** (v18 or higher)
 - **npm** or **yarn**
 - **Git**
@@ -133,6 +146,9 @@ VITE_GITHUB_TOKEN=your_github_token
 VITE_EMAILJS_SERVICE_ID=your_service_id
 VITE_EMAILJS_TEMPLATE_ID=your_template_id
 VITE_EMAILJS_PUBLIC_KEY=your_public_key
+
+# Google Analytics (Optional)
+VITE_GA_TRACKING_ID=G-XXXXXXXXXX
 ```
 
 ### 4. Run Development Server
@@ -176,6 +192,20 @@ Detailed Firebase setup guide: [FIREBASE_SETUP.md](./FIREBASE_SETUP.md)
 2. **Set up Email Service**: Configure your email provider
 3. **Create Template**: Design your email template
 4. **Get Credentials**: Add service ID, template ID, and public key to `.env`
+
+### Google Analytics Setup (Free)
+
+1. **Create GA4 Property**: Go to [Google Analytics](https://analytics.google.com/)
+2. **Add Property**: Click Admin → Create Property
+3. **Configure Website**:
+   - Name: Your Portfolio Name
+   - URL: `https://ashishthakur.me`
+   - Platform: Web
+4. **Get Tracking ID**: Copy your measurement ID (e.g., `G-XXXXXXXXXX`)
+5. **Add to Environment**: Add `VITE_GA_TRACKING_ID` to your `.env` file
+6. **Deploy**: The analytics will be automatically included in production builds
+
+**Note**: Analytics only work on the live site, not in local development.
 
 ---
 
@@ -247,16 +277,19 @@ MyPortfolioReact/
 ## 🎨 Customization
 
 ### Styling
+
 - **Colors**: Modify `tailwind.config.js` for color schemes
 - **Animations**: Customize Framer Motion animations in components
 - **Layout**: Adjust responsive breakpoints and spacing
 
 ### Content
+
 - **Personal Information**: Update content in page components
 - **Social Links**: Modify links in `ContactMe.tsx`
 - **Resume**: Replace with your own resume data in `Resume.tsx`
 
 ### Features
+
 - **Add New Sections**: Create new page components and add routes
 - **Extend Admin Panel**: Add new content types to Firebase collections
 - **Integrate APIs**: Add new data sources in the hooks directory
@@ -268,18 +301,22 @@ MyPortfolioReact/
 ### Common Issues
 
 **Firebase not configured:**
+
 - Check your `.env` file has all required Firebase variables
 - Restart the dev server after updating `.env`
 
 **404 errors on GitHub Pages:**
+
 - Ensure `404.html` is present in the build output
 - Check that the base URL is correctly set in `vite.config.ts`
 
 **Admin mode not working:**
+
 - Verify your email in `VITE_ADMIN_EMAIL` matches your Google account
 - Check Firestore security rules allow your account
 
 **Build failures:**
+
 - Clear `node_modules` and reinstall dependencies
 - Check for TypeScript errors with `npm run type-check`
 
@@ -331,6 +368,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Contact
 
 **Ashish Singh**
+
 - 📧 Email: ash1sh.1hakur10@gmail.com
 - 🌐 Portfolio: [https://ashish73653.github.io/MyPortfolioReact/](https://ashish73653.github.io/MyPortfolioReact/)
 - 💼 LinkedIn: [Your LinkedIn Profile]
