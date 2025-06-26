@@ -3,6 +3,16 @@ import { getAuth, GoogleAuthProvider } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
 
+// Debug: Check if ANY environment variables work
+console.log('🧪 Environment Test:', {
+  NODE_ENV: import.meta.env.NODE_ENV,
+  MODE: import.meta.env.MODE,
+  PROD: import.meta.env.PROD,
+  DEV: import.meta.env.DEV,
+  BASE_URL: import.meta.env.BASE_URL,
+  ALL_ENV_VARS: Object.keys(import.meta.env)
+});
+
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
@@ -20,6 +30,23 @@ console.log('🔥 Firebase Config Status:', {
   storageBucket: firebaseConfig.storageBucket ? '✅ Set' : '❌ Missing',
   messagingSenderId: firebaseConfig.messagingSenderId ? '✅ Set' : '❌ Missing',
   appId: firebaseConfig.appId ? '✅ Set' : '❌ Missing',
+});
+
+// Debug: Log the actual environment variable values
+console.log('📝 Environment Variables at Runtime:', {
+  VITE_FIREBASE_API_KEY: import.meta.env.VITE_FIREBASE_API_KEY ? '✅ Available' : '❌ Missing',
+  VITE_FIREBASE_AUTH_DOMAIN: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN ? '✅ Available' : '❌ Missing',
+  VITE_FIREBASE_PROJECT_ID: import.meta.env.VITE_FIREBASE_PROJECT_ID ? '✅ Available' : '❌ Missing',
+  VITE_FIREBASE_STORAGE_BUCKET: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET ? '✅ Available' : '❌ Missing',
+  VITE_FIREBASE_MESSAGING_SENDER_ID: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID ? '✅ Available' : '❌ Missing',
+  VITE_FIREBASE_APP_ID: import.meta.env.VITE_FIREBASE_APP_ID ? '✅ Available' : '❌ Missing',
+});
+
+// Debug: Show first few characters of actual values
+console.log('🔍 First 10 chars of values:', {
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY?.substring(0, 10) || 'undefined',
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || 'undefined',
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || 'undefined',
 });
 
 // Check if all required Firebase config values are present
