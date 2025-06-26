@@ -64,9 +64,9 @@ export default function FirebaseDebug() {
               console.log('Auth User:', auth.currentUser);
               console.log('Expected Admin Email:', "ash1sh.1hakur10@gmail.com");
               if (auth.currentUser) {
-                auth.currentUser.getIdToken().then(token => {
+                auth.currentUser.getIdToken().then((token: string) => {
                   console.log('ID Token (first 100 chars):', token.substring(0, 100) + '...');
-                }).catch(err => console.error('Token error:', err));
+                }).catch((err: any) => console.error('Token error:', err));
               }
             }}
             className="w-full bg-blue-500 text-white px-2 py-1 rounded text-xs"

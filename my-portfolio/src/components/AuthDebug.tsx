@@ -15,9 +15,9 @@ export default function AuthDebug() {
     
     // Test ID token
     if (auth.currentUser) {
-      auth.currentUser.getIdToken().then(token => {
+      auth.currentUser.getIdToken().then((token: string) => {
         console.log('ID Token (first 50 chars):', token.substring(0, 50) + '...');
-      }).catch(error => {
+      }).catch((error: any) => {
         console.error('Error getting ID token:', error);
       });
     }
