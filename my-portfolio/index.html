@@ -7,18 +7,22 @@
     <title>Ashish Singh - Portfolio</title>
     <link href="https://fonts.googleapis.com/css?family=Inter:400,500,600,700&display=swap" rel="stylesheet" />
     <script>
-      // Single Page Application redirect for GitHub Pages
-      // This handles the redirect from 404.html back to the correct route
-      (function(l) {
-        if (l.search[1] === '/' ) {
-          var decoded = l.search.slice(1).split('&').map(function(s) { 
-            return s.replace(/~and~/g, '&')
-          }).join('?');
-          window.history.replaceState(null, null,
-              l.pathname.slice(0, -1) + decoded + l.hash
-          );
+      // Handle GitHub Pages SPA redirect from 404.html
+      (function() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var redirectPath = urlParams.get('p');
+        var redirectQuery = urlParams.get('q');
+        var redirectHash = urlParams.get('h');
+        
+        if (redirectPath) {
+          var newUrl = window.location.pathname + redirectPath +
+                      (redirectQuery ? redirectQuery : '') +
+                      (redirectHash ? redirectHash : '');
+          
+          // Replace the current URL without reloading
+          window.history.replaceState(null, null, newUrl);
         }
-      }(window.location))
+      })();
     </script>
   </head>
   <body>
