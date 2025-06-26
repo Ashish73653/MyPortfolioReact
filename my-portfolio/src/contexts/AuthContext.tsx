@@ -31,6 +31,13 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // If auth is not initialized, set loading to false
+    if (!auth) {
+      console.warn('⚠️ Firebase Auth not initialized - admin features disabled');
+      setLoading(false);
+      return;
+    }
+
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
       setLoading(false);
@@ -40,6 +47,12 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   }, []);
 
   const signInWithGoogle = async () => {
+    if (!auth || !googleProvider) {
+      console.error('❌ Firebase Auth not available');
+      alert('Authentication is not available. Please check Firebase configuration.');
+      return;
+    }
+    
     try {
       await signInWithPopup(auth, googleProvider);
     } catch (error) {
@@ -49,6 +62,11 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   };
 
   const logout = async () => {
+    if (!auth) {
+      console.error('❌ Firebase Auth not available');
+      return;
+    }
+    
     try {
       await signOut(auth);
     } catch (error) {

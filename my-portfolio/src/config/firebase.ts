@@ -12,14 +12,49 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_FIREBASE_APP_ID
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
+// Debug: Log Firebase config status
+console.log('🔥 Firebase Config Status:', {
+  apiKey: firebaseConfig.apiKey ? '✅ Set' : '❌ Missing',
+  authDomain: firebaseConfig.authDomain ? '✅ Set' : '❌ Missing',
+  projectId: firebaseConfig.projectId ? '✅ Set' : '❌ Missing',
+  storageBucket: firebaseConfig.storageBucket ? '✅ Set' : '❌ Missing',
+  messagingSenderId: firebaseConfig.messagingSenderId ? '✅ Set' : '❌ Missing',
+  appId: firebaseConfig.appId ? '✅ Set' : '❌ Missing',
+});
 
-// Initialize Firebase services
-export const auth = getAuth(app);
-export const googleProvider = new GoogleAuthProvider();
-export const db = getFirestore(app);
-export const storage = getStorage(app);
+// Check if all required Firebase config values are present
+const requiredKeys = ['apiKey', 'authDomain', 'projectId', 'storageBucket', 'messagingSenderId', 'appId'];
+const missingKeys = requiredKeys.filter(key => !firebaseConfig[key as keyof typeof firebaseConfig]);
+
+if (missingKeys.length > 0) {
+  console.error('❌ Missing Firebase configuration keys:', missingKeys);
+  console.error('🔧 Please check your environment variables in GitHub repository secrets');
+}
+
+// Initialize Firebase only if config is complete
+let app: any = null;
+let auth: any = null;
+let googleProvider: any = null;
+let db: any = null;
+let storage: any = null;
+
+try {
+  if (missingKeys.length === 0) {
+    app = initializeApp(firebaseConfig);
+    auth = getAuth(app);
+    googleProvider = new GoogleAuthProvider();
+    db = getFirestore(app);
+    storage = getStorage(app);
+    console.log('✅ Firebase initialized successfully');
+  } else {
+    console.warn('⚠️ Firebase not initialized due to missing configuration');
+  }
+} catch (error) {
+  console.error('❌ Firebase initialization failed:', error);
+}
+
+// Export with fallbacks
+export { auth, googleProvider, db, storage };
 
 // Admin email for authorization
 export const ADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAIL || "ash1sh.1hakur10@gmail.com";
