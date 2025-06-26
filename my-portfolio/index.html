@@ -36,7 +36,7 @@
     </script>
     
     <script>
-      // Handle GitHub Pages SPA redirect from 404.html
+      // Handle custom domain SPA redirect from 404.html
       (function() {
         var urlParams = new URLSearchParams(window.location.search);
         var redirectPath = urlParams.get('p');
@@ -44,8 +44,8 @@
         var redirectHash = urlParams.get('h');
         
         if (redirectPath) {
-          // Build the target URL
-          var targetUrl = window.location.origin + window.location.pathname + redirectPath;
+          // For custom domain, build clean URL
+          var targetUrl = window.location.origin + redirectPath;
           
           if (redirectQuery && redirectQuery !== '?') {
             targetUrl += redirectQuery;
