@@ -36,26 +36,15 @@
     </script>
     
     <script>
-      // Handle custom domain SPA redirect from 404.html
+      // Simple redirect handling for custom domain
       (function() {
         var urlParams = new URLSearchParams(window.location.search);
-        var redirectPath = urlParams.get('p');
-        var redirectQuery = urlParams.get('q');
-        var redirectHash = urlParams.get('h');
         
-        if (redirectPath) {
-          // For custom domain, build clean URL
-          var targetUrl = window.location.origin + redirectPath;
-          
-          if (redirectQuery && redirectQuery !== '?') {
-            targetUrl += redirectQuery;
-          }
-          if (redirectHash && redirectHash !== '#') {
-            targetUrl += redirectHash;
-          }
-          
-          // Replace the current URL without reloading
-          window.history.replaceState({}, '', targetUrl);
+        // If we have redirect parameters, clean them up
+        if (urlParams.has('p') || urlParams.has('q') || urlParams.has('h')) {
+          // Just go to the clean URL without parameters
+          var cleanUrl = window.location.origin + window.location.pathname;
+          window.history.replaceState({}, '', cleanUrl);
         }
       })();
     </script>
