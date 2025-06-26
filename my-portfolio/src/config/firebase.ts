@@ -22,16 +22,6 @@ console.log('🔥 Firebase Config Status:', {
   appId: firebaseConfig.appId ? '✅ Set' : '❌ Missing',
 });
 
-// Debug: Log actual values (first few characters)
-console.log('🔥 Firebase Config Values:', {
-  apiKey: firebaseConfig.apiKey ? firebaseConfig.apiKey.substring(0, 10) + '...' : 'undefined',
-  authDomain: firebaseConfig.authDomain || 'undefined',
-  projectId: firebaseConfig.projectId || 'undefined',
-  storageBucket: firebaseConfig.storageBucket || 'undefined',
-  messagingSenderId: firebaseConfig.messagingSenderId || 'undefined',
-  appId: firebaseConfig.appId ? firebaseConfig.appId.substring(0, 15) + '...' : 'undefined',
-});
-
 // Check if all required Firebase config values are present
 const requiredKeys = ['apiKey', 'authDomain', 'projectId', 'storageBucket', 'messagingSenderId', 'appId'];
 const missingKeys = requiredKeys.filter(key => !firebaseConfig[key as keyof typeof firebaseConfig]);
