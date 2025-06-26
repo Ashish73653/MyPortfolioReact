@@ -15,12 +15,18 @@
         var redirectHash = urlParams.get('h');
         
         if (redirectPath) {
-          var newUrl = window.location.pathname + redirectPath +
-                      (redirectQuery ? redirectQuery : '') +
-                      (redirectHash ? redirectHash : '');
+          // Build the target URL
+          var targetUrl = window.location.origin + window.location.pathname + redirectPath;
+          
+          if (redirectQuery && redirectQuery !== '?') {
+            targetUrl += redirectQuery;
+          }
+          if (redirectHash && redirectHash !== '#') {
+            targetUrl += redirectHash;
+          }
           
           // Replace the current URL without reloading
-          window.history.replaceState(null, null, newUrl);
+          window.history.replaceState({}, '', targetUrl);
         }
       })();
     </script>
