@@ -36,15 +36,12 @@
     </script>
     
     <script>
-      // Simple redirect handling for custom domain
+      // Disable redirect handling for custom domain
+      // Just clean up any existing parameters
       (function() {
-        var urlParams = new URLSearchParams(window.location.search);
-        
-        // If we have redirect parameters, clean them up
-        if (urlParams.has('p') || urlParams.has('q') || urlParams.has('h')) {
-          // Just go to the clean URL without parameters
-          var cleanUrl = window.location.origin + window.location.pathname;
-          window.history.replaceState({}, '', cleanUrl);
+        if (window.location.search.includes('p=') || window.location.search.includes('q=')) {
+          // Clear any redirect parameters and go to clean home page
+          window.history.replaceState({}, '', '/');
         }
       })();
     </script>
