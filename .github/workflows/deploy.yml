@@ -51,9 +51,13 @@ jobs:
 
       - name: Debug Environment Variables
         run: |
-          echo "🔍 Checking if environment variables are available during build..."
+          echo "🔍 Checking ALL environment variables..."
           echo "VITE_FIREBASE_API_KEY: ${VITE_FIREBASE_API_KEY:0:10}..." || echo "VITE_FIREBASE_API_KEY: NOT_SET"
+          echo "VITE_FIREBASE_AUTH_DOMAIN: ${VITE_FIREBASE_AUTH_DOMAIN:-NOT_SET}"
           echo "VITE_FIREBASE_PROJECT_ID: ${VITE_FIREBASE_PROJECT_ID:-NOT_SET}"
+          echo "VITE_FIREBASE_STORAGE_BUCKET: ${VITE_FIREBASE_STORAGE_BUCKET:-NOT_SET}"
+          echo "VITE_FIREBASE_MESSAGING_SENDER_ID: ${VITE_FIREBASE_MESSAGING_SENDER_ID:-NOT_SET}"
+          echo "VITE_FIREBASE_APP_ID: ${VITE_FIREBASE_APP_ID:0:15}..." || echo "VITE_FIREBASE_APP_ID: NOT_SET"
           echo "VITE_ADMIN_EMAIL: ${VITE_ADMIN_EMAIL:-NOT_SET}"
         working-directory: ./my-portfolio
         env:
