@@ -43,6 +43,16 @@ export const useSkills = () => {
     try {
       setLoading(true);
       setError(null);
+      
+      // Check if Firebase is available
+      if (!db) {
+        console.warn('Firebase not configured, skipping skills fetch');
+        setError('Firebase not configured');
+        setSkills([]);
+        setLoading(false);
+        return;
+      }
+      
       console.log('Fetching skills from Firestore...');
       
       const querySnapshot = await getDocs(collection(db, 'skills'));
@@ -74,6 +84,10 @@ export const useSkills = () => {
 
   const addSkill = async (skillData: Omit<Skill, 'id'>): Promise<void> => {
     try {
+      if (!db) {
+        throw new Error('Firebase not configured');
+      }
+      
       console.log('Adding skill to Firestore:', skillData);
       
       const docRef = await addDoc(collection(db, 'skills'), skillData);
@@ -91,6 +105,10 @@ export const useSkills = () => {
 
   const updateSkill = async (skillId: string, skillData: Partial<Skill>): Promise<void> => {
     try {
+      if (!db) {
+        throw new Error('Firebase not configured');
+      }
+      
       console.log('Updating skill in Firestore:', skillId, skillData);
       
       await updateDoc(doc(db, 'skills', skillId), skillData);
@@ -111,6 +129,10 @@ export const useSkills = () => {
 
   const deleteSkill = async (skillId: string): Promise<void> => {
     try {
+      if (!db) {
+        throw new Error('Firebase not configured');
+      }
+      
       console.log('Deleting skill from Firestore:', skillId);
       
       await deleteDoc(doc(db, 'skills', skillId));
@@ -150,6 +172,16 @@ export const useProjects = () => {
     try {
       setLoading(true);
       setError(null);
+      
+      // Check if Firebase is available
+      if (!db) {
+        console.warn('Firebase not configured, skipping projects fetch');
+        setError('Firebase not configured');
+        setProjects([]);
+        setLoading(false);
+        return;
+      }
+      
       console.log('Fetching projects from Firestore...');
       
       const querySnapshot = await getDocs(collection(db, 'projects'));
@@ -182,6 +214,10 @@ export const useProjects = () => {
 
   const addProject = async (projectData: Omit<Project, 'id'>): Promise<void> => {
     try {
+      if (!db) {
+        throw new Error('Firebase not configured');
+      }
+      
       console.log('Adding project to Firestore:', projectData);
       
       // Ensure arrays exist
@@ -206,6 +242,10 @@ export const useProjects = () => {
 
   const updateProject = async (projectId: string, projectData: Partial<Project>): Promise<void> => {
     try {
+      if (!db) {
+        throw new Error('Firebase not configured');
+      }
+      
       console.log('Updating project in Firestore:', projectId, projectData);
       
       await updateDoc(doc(db, 'projects', projectId), projectData);
@@ -226,6 +266,10 @@ export const useProjects = () => {
 
   const deleteProject = async (projectId: string): Promise<void> => {
     try {
+      if (!db) {
+        throw new Error('Firebase not configured');
+      }
+      
       console.log('Deleting project from Firestore:', projectId);
       
       await deleteDoc(doc(db, 'projects', projectId));
