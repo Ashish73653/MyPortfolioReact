@@ -266,3 +266,44 @@ html {
 .pulse-glow {
   animation: pulse-glow 2s ease-in-out infinite;
 }
+
+/* Admin button mobile optimizations */
+.admin-button-safe-area {
+  /* Ensure admin button doesn't interfere with content */
+  margin-top: max(4rem, env(safe-area-inset-top, 4rem));
+  margin-right: max(1rem, env(safe-area-inset-right, 1rem));
+}
+
+/* Safe area support for mobile devices */
+@supports (padding-top: env(safe-area-inset-top)) {
+  .mobile-safe-top {
+    padding-top: env(safe-area-inset-top, 0);
+  }
+  
+  .mobile-safe-right {
+    padding-right: env(safe-area-inset-right, 0);
+  }
+}
+
+/* Responsive admin button adjustments */
+@media (max-width: 640px) {
+  .admin-button-mobile {
+    /* Smaller button on mobile to reduce content overlap */
+    transform: scale(0.9);
+    transform-origin: top right;
+  }
+  
+  /* Ensure content has enough top padding on mobile when admin button is present */
+  .page-content-mobile {
+    padding-top: 4rem; /* Space for admin button */
+  }
+}
+
+/* Prevent admin button from interfering with page scrolling */
+.admin-button-container {
+  pointer-events: none;
+}
+
+.admin-button-container > * {
+  pointer-events: auto;
+}
