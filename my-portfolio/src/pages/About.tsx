@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import profileImage from "../assets/IMG-20241015-WA0043copy-removebg-preview.png";
+import profileImage from "../assets/professional-photo.jpg";
 
 export default function About() {
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
@@ -148,11 +148,11 @@ export default function About() {
             {/* Profile Image with Enhanced Interactive Elements */}
             <div className="relative flex justify-center w-full">
               <motion.div
-                className="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-3xl overflow-hidden"
+                className="relative w-56 h-72 sm:w-64 sm:h-80 lg:w-72 lg:h-96 rounded-2xl overflow-hidden shadow-2xl"
                 whileHover={{ 
-                  scale: 1.08, 
-                  rotateY: 8,
-                  rotateX: 3,
+                  scale: 1.05, 
+                  rotateY: 5,
+                  rotateX: 2,
                 }}
                 transition={{ 
                   type: "spring", 
@@ -163,11 +163,11 @@ export default function About() {
                   transformStyle: "preserve-3d",
                 }}
               >
-                {/* Your actual photo */}
+                {/* Professional photo */}
                 <motion.img
                   src={profileImage}
-                  alt="Profile"
-                  className="w-full h-full object-contain"
+                  alt="Ashish Singh - Software Developer"
+                  className="w-full h-full object-cover object-center"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 1, ease: "easeOut" }}
