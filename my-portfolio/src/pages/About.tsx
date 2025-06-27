@@ -167,7 +167,7 @@ export default function About() {
                 <motion.img
                   src={profileImage}
                   alt="Ashish Singh - Software Developer"
-                  className="w-full h-full object-cover object-center"
+                  className="w-full h-full object-cover object-center rounded-full aspect-[4/3]"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 1, ease: "easeOut" }}
