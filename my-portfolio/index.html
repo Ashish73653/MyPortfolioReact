@@ -7,33 +7,13 @@
     <title>Ashish Singh - Portfolio</title>
     <link href="https://fonts.googleapis.com/css?family=Inter:400,500,600,700&display=swap" rel="stylesheet" />
     
-    <!-- Google Analytics -->
-    <script>
-      // Only load analytics in production
-      if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
-        // Get tracking ID from build-time environment variable
-        var GA_TRACKING_ID = 'G-WP9GE83NKE';
-        
-        if (GA_TRACKING_ID && GA_TRACKING_ID !== '%VITE_GA_TRACKING_ID%') {
-          // Load Google Analytics
-          var script = document.createElement('script');
-          script.async = true;
-          script.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_TRACKING_ID;
-          document.head.appendChild(script);
-          
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', GA_TRACKING_ID, {
-            page_title: document.title,
-            page_location: window.location.href
-          });
-          
-          // Make gtag available globally for custom events
-          window.gtag = gtag;
-        }
-      }
-    </script>
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-579G3Q7X');</script>
+<!-- End Google Tag Manager -->
     
     <script>
       // Disable redirect handling for custom domain
@@ -47,6 +27,10 @@
     </script>
   </head>
   <body>
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-579G3Q7X"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
