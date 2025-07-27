@@ -1,9 +1,22 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import profileImage from "../assets/professional-photo.jpg";
 
 export default function About() {
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -31,33 +44,33 @@ export default function About() {
   ];
 
   const socialLinks = [
-    { 
-      name: "GitHub", 
-      icon: "🐙", 
-      url: "https://github.com/Ashish73653", 
-      color: "hover:bg-gray-800", 
-      description: "Check out my code" 
+    {
+      name: "GitHub",
+      icon: "🐙",
+      url: "https://github.com/Ashish73653",
+      color: "hover:bg-gray-800",
+      description: "Check out my code",
     },
-    { 
-      name: "LinkedIn", 
-      icon: "💼", 
-      url: "https://www.linkedin.com/in/ashish-singh-1771091a5/", 
-      color: "hover:bg-blue-600", 
-      description: "Let's connect professionally" 
+    {
+      name: "LinkedIn",
+      icon: "💼",
+      url: "https://www.linkedin.com/in/ashish-singh-1771091a5/",
+      color: "hover:bg-blue-600",
+      description: "Let's connect professionally",
     },
-    { 
-      name: "Twitter", 
-      icon: "🐦", 
-      url: "#", 
-      color: "hover:bg-sky-500", 
-      description: "Follow my thoughts" 
+    {
+      name: "Twitter",
+      icon: "🐦",
+      url: "#",
+      color: "hover:bg-sky-500",
+      description: "Follow my thoughts",
     },
-    { 
-      name: "Email", 
-      icon: "📧", 
-      url: "mailto:ash1sh.1hakur10@email.com", 
-      color: "hover:bg-red-500", 
-      description: "Drop me a message" 
+    {
+      name: "Email",
+      icon: "📧",
+      url: "mailto:ash1sh.1hakur10@email.com",
+      color: "hover:bg-red-500",
+      description: "Drop me a message",
     },
   ];
 
@@ -74,10 +87,10 @@ export default function About() {
           <motion.div
             key={i}
             className={`absolute w-1 h-1 rounded-full ${
-              i % 4 === 0 
-                ? "bg-blue-400/40" 
-                : i % 4 === 1 
-                ? "bg-purple-400/40" 
+              i % 4 === 0
+                ? "bg-blue-400/40"
+                : i % 4 === 1
+                ? "bg-purple-400/40"
                 : i % 4 === 2
                 ? "bg-pink-400/40"
                 : "bg-indigo-400/40"
@@ -97,7 +110,7 @@ export default function About() {
             }}
             style={{
               left: `${3 + i * 6}%`,
-              top: `${5 + (i * 6)}%`,
+              top: `${5 + i * 6}%`,
             }}
           />
         ))}
@@ -147,6 +160,7 @@ export default function About() {
           >
             {/* Profile Image with Enhanced Interactive Elements */}
             <div className="relative flex justify-center w-full">
+              {/* Image container with animations */}
               <motion.div
                 className="relative w-56 h-72 sm:w-64 sm:h-80 lg:w-72 lg:h-96 rounded-2xl overflow-hidden shadow-2xl"
                 whileHover={{ 
@@ -246,52 +260,56 @@ export default function About() {
                 ))}
               </motion.div>
 
-              {/* Multiple enhanced decorative rings */}
-              <motion.div
-                className="absolute -inset-6 border-2 border-blue-300/60 rounded-full"
-                animate={{ 
-                  rotate: 360, 
-                  scale: [1, 1.1, 1],
-                  borderColor: [
-                    "rgba(147, 197, 253, 0.6)",
-                    "rgba(167, 139, 250, 0.6)",
-                    "rgba(244, 114, 182, 0.6)",
-                    "rgba(99, 102, 241, 0.6)",
-                    "rgba(147, 197, 253, 0.6)"
-                  ]
-                }}
-                transition={{ 
-                  rotate: { duration: 25, repeat: Infinity, ease: "linear" },
-                  scale: { duration: 5, repeat: Infinity, ease: "easeInOut" },
-                  borderColor: { duration: 8, repeat: Infinity, ease: "easeInOut" }
-                }}
-              />
-              <motion.div
-                className="absolute -inset-10 border border-purple-300/50 rounded-full"
-                animate={{ 
-                  rotate: -360, 
-                  scale: [1, 0.9, 1],
-                  opacity: [0.5, 0.9, 0.5]
-                }}
-                transition={{ 
-                  rotate: { duration: 35, repeat: Infinity, ease: "linear" },
-                  scale: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 },
-                  opacity: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }
-                }}
-              />
-              <motion.div
-                className="absolute -inset-14 border border-pink-300/40 rounded-full"
-                animate={{ 
-                  rotate: 360, 
-                  opacity: [0.3, 0.8, 0.3],
-                  scale: [1, 1.08, 1]
-                }}
-                transition={{ 
-                  rotate: { duration: 45, repeat: Infinity, ease: "linear" },
-                  opacity: { duration: 5, repeat: Infinity, ease: "easeInOut", delay: 2 },
-                  scale: { duration: 7, repeat: Infinity, ease: "easeInOut", delay: 3 }
-                }}
-              />
+              {/* Multiple decorative rings - CONDITIONALLY RENDER BASED ON SCREEN SIZE */}
+              {!isMobile && (
+                <>
+                  <motion.div
+                    className="absolute -inset-6 border-2 border-blue-300/60 rounded-full"
+                    animate={{ 
+                      rotate: 360, 
+                      scale: [1, 1.1, 1],
+                      borderColor: [
+                        "rgba(147, 197, 253, 0.6)",
+                        "rgba(167, 139, 250, 0.6)",
+                        "rgba(244, 114, 182, 0.6)",
+                        "rgba(99, 102, 241, 0.6)",
+                        "rgba(147, 197, 253, 0.6)"
+                      ]
+                    }}
+                    transition={{ 
+                      rotate: { duration: 25, repeat: Infinity, ease: "linear" },
+                      scale: { duration: 5, repeat: Infinity, ease: "easeInOut" },
+                      borderColor: { duration: 8, repeat: Infinity, ease: "easeInOut" }
+                    }}
+                  />
+                  <motion.div
+                    className="absolute -inset-10 border border-purple-300/50 rounded-full"
+                    animate={{ 
+                      rotate: -360, 
+                      scale: [1, 0.9, 1],
+                      opacity: [0.5, 0.9, 0.5]
+                    }}
+                    transition={{ 
+                      rotate: { duration: 35, repeat: Infinity, ease: "linear" },
+                      scale: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 },
+                      opacity: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }
+                    }}
+                  />
+                  <motion.div
+                    className="absolute -inset-14 border border-pink-300/40 rounded-full"
+                    animate={{ 
+                      rotate: 360, 
+                      opacity: [0.3, 0.8, 0.3],
+                      scale: [1, 1.08, 1]
+                    }}
+                    transition={{ 
+                      rotate: { duration: 45, repeat: Infinity, ease: "linear" },
+                      opacity: { duration: 5, repeat: Infinity, ease: "easeInOut", delay: 2 },
+                      scale: { duration: 7, repeat: Infinity, ease: "easeInOut", delay: 3 }
+                    }}
+                  />
+                </>
+              )}
             </div>
 
             {/* Enhanced Social Media Links */}

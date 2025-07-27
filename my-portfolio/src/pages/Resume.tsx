@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
+import resumePdf from "../assets/AshishResume.pdf";
 
 export default function Resume() {
   const [activeSection, setActiveSection] = useState<string>("experience");
@@ -93,14 +94,14 @@ export default function Resume() {
     {
   title: "AWS Certified Cloud Practitioner",
   issuer: "Amazon Web Services",
-  issueDate: "Ongoing",
-  expiryDate: "—",
-  credentialId: "—",
-  description: "Pursuing certification to validate foundational knowledge of AWS Cloud concepts, services, and use cases.",
-  skills: ["AWS Basics", "Cloud Concepts", "Security", "Billing & Pricing"],
+  issueDate: "July 2025", // Updated from "Ongoing"
+  expiryDate: "July 2028", // Typically valid for 3 years
+  credentialId: "a9cfe502-fd08-446a-bb52-ec1c81fc380c", // Added your credential ID
+  description: "Validates foundational knowledge of AWS Cloud concepts, services, security, architecture, pricing and support.",
+  skills: ["AWS Services", "Cloud Concepts", "Security", "Billing & Pricing"],
   icon: "☁️",
   color: "from-yellow-400 to-orange-500",
-  badgeUrl: "#"
+  badgeUrl: "https://www.credly.com/badges/a9cfe502-fd08-446a-bb52-ec1c81fc380c/public_url" // Added your verification URL
 },
 {
   title: "Java Certification",
@@ -662,18 +663,16 @@ export default function Resume() {
           className="text-center mt-16"
           variants={itemVariants}
         >
-          <motion.button
-            className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300"
+          <motion.a
+            href={resumePdf}
+            download="Ashish_Singh_Resume.pdf"
+            className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 inline-block"
             whileHover={{ 
               scale: 1.05, 
               y: -5,
               boxShadow: "0 20px 40px rgba(59, 130, 246, 0.3)" 
             }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => {
-              // Placeholder for download functionality
-              alert("Resume download functionality would be implemented here");
-            }}
           >
             <motion.span 
               className="flex items-center gap-3"
@@ -681,7 +680,7 @@ export default function Resume() {
             >
               📄 Download Resume PDF
             </motion.span>
-          </motion.button>
+          </motion.a>
         </motion.div>
       </div>
     </motion.div>
